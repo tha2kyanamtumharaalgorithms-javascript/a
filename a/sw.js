@@ -20,7 +20,7 @@ self.addEventListener("fetch", (event) => {
     );
   });
 let p='/a/a/';
-d=[p+"index.html",
+let d=[p+"index.html",
 p+"rop.html",
 p+"pc.html",
 p+"exgst.html",
@@ -37,12 +37,9 @@ p+"my.css",
 p+"om.css",
 p];
 
-self.addEventListener("install", (event) => {
-    event.waitUntil(
-               caches.open('v1').then((cache)=>{
-                   cache.addAll(d);
-               }))
-   });
+caches.open('v1').then((cache)=>{
+      cache.addAll(d);
+ })
 
 
 
