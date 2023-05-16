@@ -41,13 +41,9 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         (async() => {
             try {
-                cache_obj = await caches.open('v1').then((c) => {
-                p.forEach((v)=>{
-                    if (!c.match(v)) {
-                        c.add(v);
-                    }
-                })
-            });
+               await caches.open('v1');
+               let a=await caches.match(p).then((v) => v);
+                    a&&(await c.addAll(v));
             }
             catch{
                 console.log("error occured while caching...")
