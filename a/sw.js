@@ -20,7 +20,7 @@ self.addEventListener("fetch", (event) => {
     );
   });
 let p='/a/a/';
-p=[p+"index.html",
+d=[p+"index.html",
 p+"rop.html",
 p+"pc.html",
 p+"exgst.html",
@@ -36,19 +36,19 @@ p+"sw.js",
 p+"my.css",
 p+"om.css",
 p];
+
+
 self.addEventListener("install", (event) => {
     console.log("Service Worker : Installed!");
     event.waitUntil(
-        (async() => {
-            try {
-               await caches.open('v1');
-               let a=await caches.match(p).then((v) => v);
-                    a||(await c.addAll(v));
-            }
-            catch{
-                console.log("error occured while caching...")
-            }
-        })()
+       caches.open('v1');
+caches.match(p).then((res)=>{
+    if (!res) {
+    caches.open('v1').then((cache)=>{
+    cache.addAll(d);
+     });
+    }
+});
     )
 } )
 
