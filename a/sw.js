@@ -43,7 +43,7 @@ self.addEventListener("install", (event) => {
             try {
                await caches.open('v1');
                let a=await caches.match(p).then((v) => v);
-                    a&&(await c.addAll(v));
+                    a||(await c.addAll(v));
             }
             catch{
                 console.log("error occured while caching...")
