@@ -37,20 +37,17 @@ p+"my.css",
 p+"om.css",
 p];
 
-
+caches.open('v1');
 self.addEventListener("install", (event) => {
-    console.log("Service Worker : Installed!");
-    event.waitUntil(
-       caches.open('v1');
-caches.match(p).then((res)=>{
-    if (!res) {
-    caches.open('v1').then((cache)=>{
-    cache.addAll(d);
-     });
-    }
-});
-    )
-} )
+    event.waitUntil(caches.match(p).then((res)=>{
+           console.log(!res);
+           if (!(res)) {
+               caches.open('v1').then((cache)=>{
+                   cache.addAll(d);
+               })
+           }}));
+   });
+
 
 
 
