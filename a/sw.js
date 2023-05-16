@@ -19,10 +19,7 @@ self.addEventListener("fetch", (event) => {
       })
     );
   });
-//   let p="http://127.0.0.1:5500/";
 let p='/a/a/';
-
-
 p=[p+"index.html",
 p+"rop.html",
 p+"pc.html",
@@ -45,10 +42,10 @@ self.addEventListener("install", (event) => {
         (async() => {
             try {
                 cache_obj = await caches.open('v1').then((c) => {
-                p.fetch((v)=>{
-                    if (!caches.match(v)) {
+                p.forEach((v)=>{
+                    if (!c.match(v)) {
                         c.add(v);
-                    } 
+                    }
                 })
             });
             }
